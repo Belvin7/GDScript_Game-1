@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://bj0f3herfj2bp"]
+
+[ext_resource type="Script" path="res://scripts/intro.gd" id="1_u3ijn"]
+[ext_resource type="Texture2D" uid="uid://udu428b0xib5" path="res://art/logo/Unbenannt-1.png" id="2_feyt6"]
+
+[sub_resource type="Animation" id="Animation_o3kuk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6bww7"]
+resource_name = "fade in"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.46667, 3.63333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_wt4ui"]
+resource_name = "fade out"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j1fpe"]
+_data = {
+"RESET": SubResource("Animation_o3kuk"),
+"fade in": SubResource("Animation_6bww7"),
+"fade out": SubResource("Animation_wt4ui")
+}
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_u3ijn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(585, 319)
+scale = Vector2(2.0832, 2.07278)
+texture = ExtResource("2_feyt6")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -46.0
+offset_top = -26.0
+offset_right = 1220.0
+offset_bottom = 710.0
+color = Color(0, 0, 0, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_j1fpe")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

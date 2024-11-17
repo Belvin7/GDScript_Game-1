@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxqioxiri3l26"]
+
+[ext_resource type="Texture2D" uid="uid://5p3lcaw8hstf" path="res://art/gun/test.png" id="1_rc8ge"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xewy"]
+radius = 129.124
+
+[node name="Area2D" type="Area2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_8xewy")
+
+[node name="Rotator" type="Marker2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Rotator"]
+texture = ExtResource("1_rc8ge")

@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://dsh71alijdja8"]
+
+[ext_resource type="Texture2D" uid="uid://bn8183t6c1phf" path="res://art/chars/bird.png" id="1_0wy6n"]
+[ext_resource type="Script" path="res://scripts/pigeon.gd" id="1_espyd"]
+[ext_resource type="AudioStream" uid="uid://dpjlpi53r4i07" path="res://audio/pigeons-flying-6351.mp3" id="3_4h8ca"]
+[ext_resource type="PackedScene" uid="uid://cbgs56en7fp2v" path="res://handler/hurt_box.tscn" id="4_gdqda"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ctofu"]
+radius = 2.0
+
+[node name="Pigeon" type="Node2D"]
+script = ExtResource("1_espyd")
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="Bird" type="Sprite2D" parent="CharacterBody2D"]
+position = Vector2(1.90735e-06, 0)
+scale = Vector2(0.109499, 0.104999)
+texture = ExtResource("1_0wy6n")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4h8ca")
+
+[node name="Hurt_Box" parent="." instance=ExtResource("4_gdqda")]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt_Box"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_ctofu")

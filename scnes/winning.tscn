@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5yfq66d7w5y3"]
+
+[ext_resource type="Script" path="res://scnes/winning.gd" id="1_rbact"]
+
+[node name="winning" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_rbact")
+
+[node name="back" type="Button" parent="."]
+offset_left = 502.0
+offset_top = 268.0
+offset_right = 598.0
+offset_bottom = 299.0
+text = "Main Menu"
+
+[connection signal="pressed" from="back" to="." method="_on_back_pressed"]

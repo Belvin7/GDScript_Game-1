@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgyb5lltix4ci"]
+
+[ext_resource type="Script" path="res://scripts/audio_player.gd" id="1_rksql"]
+
+[node name="AudioPlayer" type="AudioStreamPlayer"]
+volume_db = -12.18
+script = ExtResource("1_rksql")

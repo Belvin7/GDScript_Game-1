@@ -1,0 +1,85 @@
+[gd_scene load_steps=13 format=3 uid="uid://c3epy7vnuf111"]
+
+[ext_resource type="Texture2D" uid="uid://cs6gm25et1nqt" path="res://brackeys_platformer_assets/sprites/knight.png" id="1_mju4o"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_x5xim"]
+[ext_resource type="PackedScene" uid="uid://3oru3neuckhl" path="res://handler/hitbox_handler.tscn" id="3_1te5m"]
+[ext_resource type="PackedScene" uid="uid://cno8oexf7x88o" path="res://handler/health_handler.tscn" id="4_578ac"]
+[ext_resource type="PackedScene" uid="uid://c2f38uaiwrcu2" path="res://handler/hit_box.tscn" id="5_35kv1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2nurh"]
+atlas = ExtResource("1_mju4o")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_74mac"]
+atlas = ExtResource("1_mju4o")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2ve6"]
+atlas = ExtResource("1_mju4o")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_liwcj"]
+atlas = ExtResource("1_mju4o")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7al3d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2nurh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_74mac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2ve6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_liwcj")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2ivq4"]
+radius = 5.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_74uvu"]
+radius = 5.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_x5xim")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -13)
+sprite_frames = SubResource("SpriteFrames_7al3d")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.815139
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1, -6)
+shape = SubResource("CircleShape2D_2ivq4")
+
+[node name="hitbox_handler" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("3_1te5m")]
+parent = NodePath("..")
+
+[node name="health_handler" parent="." node_paths=PackedStringArray("hitbox_handler") instance=ExtResource("4_578ac")]
+hitbox_handler = NodePath("../hitbox_handler")
+
+[node name="Hitbox" parent="." node_paths=PackedStringArray("health_handler") instance=ExtResource("5_35kv1")]
+collision_layer = 2
+collision_mask = 0
+health_handler = NodePath("../health_handler")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1, -8)
+shape = SubResource("CircleShape2D_74uvu")
+
+[node name="Rotation" type="Node2D" parent="."]
+rotation = -0.10472
+
+[node name="Marker2D" type="Marker2D" parent="Rotation"]
+position = Vector2(13, -9)
