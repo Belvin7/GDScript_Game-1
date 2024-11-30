@@ -1,16 +1,15 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxqioxiri3l26"]
 
+[ext_resource type="Script" path="res://scripts/gun.gd" id="1_oghhk"]
 [ext_resource type="Texture2D" uid="uid://5p3lcaw8hstf" path="res://art/gun/test.png" id="1_rc8ge"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8xewy"]
-radius = 129.124
+[node name="Gun" type="Node2D"]
+script = ExtResource("1_oghhk")
 
-[node name="Area2D" type="Area2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_8xewy")
-
-[node name="Rotator" type="Marker2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="Rotator"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(15, 0.40625)
+scale = Vector2(0.518382, 0.741071)
 texture = ExtResource("1_rc8ge")
+
+[node name="GunBarrel" type="Marker2D" parent="."]
+position = Vector2(24, -1)

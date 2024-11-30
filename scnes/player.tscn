@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3epy7vnuf111"]
+[gd_scene load_steps=14 format=3 uid="uid://c3epy7vnuf111"]
 
 [ext_resource type="Texture2D" uid="uid://cs6gm25et1nqt" path="res://art/chars/knight.png" id="1_mju4o"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_x5xim"]
 [ext_resource type="PackedScene" uid="uid://3oru3neuckhl" path="res://handler/hitbox_handler.tscn" id="3_1te5m"]
 [ext_resource type="PackedScene" uid="uid://cno8oexf7x88o" path="res://handler/health_handler.tscn" id="4_578ac"]
 [ext_resource type="PackedScene" uid="uid://c2f38uaiwrcu2" path="res://handler/hit_box.tscn" id="5_35kv1"]
+[ext_resource type="PackedScene" uid="uid://cxqioxiri3l26" path="res://scnes/gun.tscn" id="6_4enkx"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2nurh"]
 atlas = ExtResource("1_mju4o")
@@ -78,9 +79,5 @@ health_handler = NodePath("../health_handler")
 position = Vector2(1, -8)
 shape = SubResource("CircleShape2D_74uvu")
 
-[node name="Rotation" type="Node2D" parent="."]
-position = Vector2(1, -8)
-rotation = 0.0122173
-
-[node name="Marker2D" type="Marker2D" parent="Rotation"]
-position = Vector2(13, -9)
+[node name="Gun" parent="." instance=ExtResource("6_4enkx")]
+position = Vector2(2, -9)

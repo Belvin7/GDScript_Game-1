@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_yurfn"]
 [ext_resource type="PackedScene" uid="uid://c3epy7vnuf111" path="res://scnes/player.tscn" id="2_onlid"]
-[ext_resource type="AudioStream" uid="uid://bgiuc6lmnfhoq" path="res://audio/20241116_miniloop_ingame.mp3" id="3_87h7a"]
+[ext_resource type="AudioStream" uid="uid://dty6fley5ko1k" path="res://audio/20241125_miniloop_ingame.mp3" id="3_3b3wp"]
 [ext_resource type="PackedScene" uid="uid://b4i855kcett3h" path="res://scnes/pause_menu.tscn" id="4_fci25"]
 [ext_resource type="PackedScene" uid="uid://b5yfq66d7w5y3" path="res://scnes/winning.tscn" id="5_4yv8p"]
 
@@ -25,7 +25,7 @@ shape = SubResource("WorldBoundaryShape2D_dhkyb")
 disabled = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_87h7a")
+stream = ExtResource("3_3b3wp")
 playback_type = 1
 parameters/looping = true
 

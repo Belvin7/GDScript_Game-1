@@ -4,14 +4,6 @@ extends CharacterBody2D
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
 
-var bulletType = preload("res://scnes/bullet.tscn")
-
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("space"):
-		shoot()
-		$Rotation.look_at(get_global_mouse_position())
-
-
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	#if not is_on_floor():
@@ -39,12 +31,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	
-func shoot():
-	var bullet = bulletType.instantiate()
-	get_parent().add_child(bullet)
-	bullet.position = $Rotation/Marker2D.global_position
-	bullet.bullet_velocity = get_global_mouse_position()-bullet.position
-	print("shot...")
-	
+
 	
 		
