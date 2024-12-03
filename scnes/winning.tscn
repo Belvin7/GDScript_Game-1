@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b5yfq66d7w5y3"]
 
-[ext_resource type="Script" path="res://scnes/winning.gd" id="1_rbact"]
+[ext_resource type="Script" path="res://scripts/winning.gd" id="1_rbact"]
 
 [node name="winning" type="Node2D"]
 process_mode = 3

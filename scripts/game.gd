@@ -1,10 +1,11 @@
 extends Node2D
 
-var enemy_scene = preload("res://scnes/pigeon.tscn") 
+var pigeon_scene = preload("res://scnes/pigeon.tscn") 
 var debug_rect = ColorRect.new()
 
 func _ready():
-	$AudioStreamPlayer.play()
+	#$AudioStreamPlayer.play()
+	pass
 
 #Get Mouce Position on Click
 func _input(event):
@@ -29,12 +30,12 @@ func _input(event):
 		debug_rect.position = event.position
 		#add_child(debug_rect)
 		
-		## Enemy Spawner
+		## Pigeon Spawner
 		#################
-		var enemy = enemy_scene.instantiate()
+		var pigeon = pigeon_scene.instantiate()
 		print("Loading Sccene")
 		#enemy.position = mouse_position
-		enemy.position = event.position
-		add_child(enemy)
+		pigeon.position = event.position
+		add_child(pigeon)
 	
-		print_tree()
+		#print_tree()
