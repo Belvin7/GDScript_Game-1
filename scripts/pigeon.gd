@@ -42,7 +42,7 @@ func _physics_process(delta: float) -> void:
 	
 		
 	velocity = new_velocity * _speed * delta
-	print(velocity)
+	#print(velocity)
 	move_and_slide()
 
 
@@ -50,7 +50,7 @@ func update_local_pigeons() -> void: # updates the local_pigeons array to keep t
 	for pigeon in pigeons:
 		# if the pigeon at the current position of the array is within the cohesion range,
 		# it is not this pigeon and it is not yet within the local neighbourhood, it is added to the local neighbourhood
-		if current_pos.distance_to(pigeon.global_transform.origin) <= _cohesion_range and pigeon != get_owner() and pigeon not in local_pigeons:
+	 	if current_pos.distance_to(pigeon.global_transform.origin) <= _cohesion_range and pigeon != get_owner() and pigeon not in local_pigeons:
 			local_pigeons.append(pigeon)
 			
 		# if an enemy is not within the cohesion range, but still in our local neighbourhood, it is removed from the local neighbourhood

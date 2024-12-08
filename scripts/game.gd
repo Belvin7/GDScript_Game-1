@@ -11,7 +11,7 @@ func _ready():
 func _input(event):
 	if event is InputEventMouse and event.is_action_pressed("click"):
 		var mouse_position = get_viewport().get_mouse_position()
-		print("Mouse Position: ", mouse_position)
+		#print("Mouse Position: ", mouse_position)
 		debug_rect.set_size(Vector2(20, 20))
 		debug_rect.color = Color(1, 0, 0)  # Red color
 		#debug_rect.position = position

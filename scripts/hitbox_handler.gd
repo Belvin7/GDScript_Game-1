@@ -13,5 +13,5 @@ func on_handle_hitbox() -> void:
 	parent.queue_free()
 	
 	#testing
-	get_tree().paused = true;
-	get_tree().change_scene_to_file("res://scnes/winning.tscn")
+	#get_tree().paused = true;
+	#get_tree().change_scene_to_file("res://scnes/winning.tscn")

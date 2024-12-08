@@ -1,9 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjaikp5ibi5og"]
+[gd_scene load_steps=6 format=3 uid="uid://bjaikp5ibi5og"]
 
 [ext_resource type="Texture2D" uid="uid://cumixxr5n537a" path="res://icon.svg" id="1_n1364"]
 [ext_resource type="Script" path="res://scripts/bullet.gd" id="1_wgvu2"]
+[ext_resource type="PackedScene" uid="uid://cbgs56en7fp2v" path="res://handler/hurt_box.tscn" id="3_6msfj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gnc16"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wkirj"]
 radius = 2.0
 
 [node name="Bullet" type="CharacterBody2D"]
@@ -14,6 +18,12 @@ visibility_layer = 2
 shape = SubResource("CircleShape2D_gnc16")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(5.96046e-08, 5.96046e-08)
-scale = Vector2(0.0195313, 0.0195313)
+scale = Vector2(0.0253906, 0.0253906)
 texture = ExtResource("1_n1364")
+
+[node name="Hurt_Box" parent="." instance=ExtResource("3_6msfj")]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt_Box"]
+shape = SubResource("CircleShape2D_wkirj")
