@@ -26,7 +26,7 @@ func handle_health() -> void:
 
 func calculate_damage(value:int)-> void:
 	current_healt -= value
-	print("Current Healt: " + str(current_healt))
+	print( get_parent().name+ " Healt: " + str(current_healt))
 
 
 func on_apply_damage(value : int) -> void:

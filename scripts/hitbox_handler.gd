@@ -5,12 +5,15 @@ extends Node
 @export var parent: Node2D = null
 
 signal handle_hitbox
+signal update_flock
 
 func _ready():
 	handle_hitbox.connect(on_handle_hitbox)
 	
 func on_handle_hitbox() -> void:
+	#parent.emit_signal("update_flock", self.get_parent())
 	parent.queue_free()
+	
 	
 	#testing
 	#get_tree().paused = true;

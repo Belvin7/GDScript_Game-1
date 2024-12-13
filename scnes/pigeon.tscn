@@ -16,17 +16,12 @@ radius = 5.09902
 
 [node name="Pigeon" type="CharacterBody2D" groups=["pigeons"]]
 script = ExtResource("1_7catg")
-_speed = null
-_attack_range = null
-_cohesion_range = null
-_seperation_range = null
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_4h8ca")
 
 [node name="Hurt_Box" parent="." instance=ExtResource("4_gdqda")]
-collision_layer = 0
-collision_mask = 4
+collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurt_Box"]
 position = Vector2(0, -1)
@@ -53,3 +48,6 @@ health_handler = NodePath("../Health_Handler")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 shape = SubResource("CircleShape2D_d2m5y")
+
+[connection signal="handle_hitbox" from="Hitbox_Handler" to="." method="_on_hitbox_handler_handle_hitbox"]
+[connection signal="update_flock" from="Hitbox_Handler" to="." method="_on_hitbox_handler_update_flock"]
