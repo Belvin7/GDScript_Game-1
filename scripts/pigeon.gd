@@ -47,15 +47,22 @@ func _physics_process(delta: float) -> void:
 
 
 func update_local_pigeons() -> void: # updates the local_pigeons array to keep track of our local neighbourhood
-	for pigeon in pigeons:
-		# if the pigeon at the current position of the array is within the cohesion range,
-		# it is not this pigeon and it is not yet within the local neighbourhood, it is added to the local neighbourhood
-	 	if current_pos.distance_to(pigeon.global_transform.origin) <= _cohesion_range and pigeon != get_owner() and pigeon not in local_pigeons:
-			local_pigeons.append(pigeon)
+	if not pigeons.is_empty():
+		for pigeon in pigeons:
 			
-		# if an enemy is not within the cohesion range, but still in our local neighbourhood, it is removed from the local neighbourhood
-		if current_pos.distance_to(pigeon.global_transform.origin) > _cohesion_range and pigeon in local_pigeons:
-			local_pigeons.erase(pigeon)
+			if pigeon == null:
+				local_pigeons.erase(pigeon)
+				continue
+			# if an enemy is not within the cohesion range, but still in our local neighbourhood, it is removed from the local neighbourhood
+			if current_pos.distance_to(pigeon.global_transform.origin) > _cohesion_range and pigeon in local_pigeons:
+				local_pigeons.erase(pigeon)
+				
+			# if the pigeon at the current position of the array is within the cohesion range,
+			# it is not this pigeon and it is not yet within the local neighbourhood, it is added to the local neighbourhood
+			if current_pos.distance_to(pigeon.global_transform.origin) <= _cohesion_range and pigeon != get_owner() and pigeon not in local_pigeons:
+				local_pigeons.append(pigeon)
+				
+			
 
 
 #Pigeons want to stay together
@@ -108,9 +115,9 @@ func alignment() -> Vector2:
 	alignment_velocity /= local_pigeons.size()
 	
 	return alignment_velocity
-
-
 	
 
-	
-	
+
+#func _on_hitbox_handler_update_flock(pigeon) -> void:
+	#if local_pigeons.has(pigeon):
+		#local_pigeons.erase(pigeon)

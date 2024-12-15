@@ -9,3 +9,5 @@ func _ready():
 func on_area_entered(area: Area2D) -> void:
 	if area is HitBox:
 		area.apply_hit.emit(damage)
+		
+		get_parent().queue_free()

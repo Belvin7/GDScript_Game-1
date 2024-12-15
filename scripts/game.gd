@@ -37,5 +37,3 @@ func _input(event):
 		#enemy.position = mouse_position
 		pigeon.position = event.position
 		add_child(pigeon)
-	
-		#print_tree()
