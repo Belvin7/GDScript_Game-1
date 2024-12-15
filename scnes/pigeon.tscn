@@ -43,7 +43,7 @@ hitbox_handler = NodePath("../Hitbox_Handler")
 
 [node name="Hitbox" parent="." node_paths=PackedStringArray("health_handler") instance=ExtResource("7_h5lj5")]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 256
 health_handler = NodePath("../Health_Handler")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
