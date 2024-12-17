@@ -7,7 +7,8 @@ const bullet = preload("res://scnes/bullet.tscn")
 
 #Gun Movement to Cursor - manual control
 func _process(delta: float) -> void:
-	aimMouse()
+	#aimAuto()
+	pass
 	
 
 func shoot():
@@ -46,8 +47,7 @@ func aimAuto(target:Node2D) -> void:
 	else:
 		scale.y = 1 
 	
-	if Input.is_action_just_pressed("space"):
-		shoot()
+	shotEnemy(target)
 
 func shotEnemy(target:Node2D):
 	var bullet_instance = bullet.instantiate()

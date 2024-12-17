@@ -34,7 +34,6 @@ func _physics_process(delta: float) -> void:
 func _on_view_area_entered(area: Area2D) -> void:
 	var enemy = area.get_parent()
 	print("Area Entered: " + area.get_parent().name)
-	
 	#$Gun.aimAuto(area.get_parent())
-	$Gun.shotEnemy(area.get_parent())
+	$Gun.aimAuto(area.get_parent())
 	#$Gun.shoot()
