@@ -11,14 +11,14 @@ config_version=5
 [application]
 
 config/name="test"
-run/main_scene="res://scnes/game.tscn"
+run/main_scene="res://scnes/main_menu.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://art/chars/taube.png"
 
 [autoload]
 
 AudioPlayer="*res://scnes/audio_player.tscn"
-GlobalPigeonUpgrades="*res://scripts/Pigeon/PigeonUpgrades/global_pigeon_upgrades.gd"
+Global="*res://scripts/_global.gd"
 
 [display]
 

@@ -1,6 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://gls6lsdjgy5c"]
+[gd_scene load_steps=8 format=3 uid="uid://gls6lsdjgy5c"]
 
 [ext_resource type="Script" path="res://scripts/shop.gd" id="1_eu3qv"]
+[ext_resource type="Texture2D" uid="uid://bn8183t6c1phf" path="res://art/chars/bird.png" id="2_e7cin"]
+
+[sub_resource type="SystemFont" id="SystemFont_7tl0j"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_gtx1q"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_tmsqs"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_46rg6"]
+font_names = PackedStringArray("Impact")
+
+[sub_resource type="SystemFont" id="SystemFont_qt701"]
+font_names = PackedStringArray("Impact")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -23,6 +39,20 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 12
 
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_e7cin")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "test"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 alignment = 1
@@ -37,6 +67,7 @@ layout_mode = 2
 
 [node name="Speed_Upgrade_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_7tl0j")
 text = "Upgrade Speed"
 
 [node name="Seperator2" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
@@ -44,6 +75,7 @@ layout_mode = 2
 
 [node name="Damage_Upgrade_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_gtx1q")
 text = "Upgrade Damage"
 
 [node name="Seperator3" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
@@ -51,15 +83,27 @@ layout_mode = 2
 
 [node name="Health_Upgrade_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_tmsqs")
 text = "Upgrade Health"
 
 [node name="Seperator4" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Return_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Play_Again_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-text = "Return"
+theme_override_fonts/font = SubResource("SystemFont_46rg6")
+text = "Play Again"
+
+[node name="Seperator5" type="Control" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Main_Menu_Button" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_qt701")
+text = "Main Menu"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Speed_Upgrade_Button" to="." method="_on_speed_upgrade_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Damage_Upgrade_Button" to="." method="_on_damage_upgrade_button_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Health_Upgrade_Button" to="." method="_on_health_upgrade_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Play_Again_Button" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/Main_Menu_Button" to="." method="_on_main_menu_button_pressed"]

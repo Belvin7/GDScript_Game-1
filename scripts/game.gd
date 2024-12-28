@@ -1,10 +1,16 @@
 extends Node2D
 
-var pigeon_scene = preload("res://scnes/pigeon.tscn") 
+@export var pigeon_scene = preload("res://scnes/pigeon.tscn") 
+@export var winning_scene: PackedScene = preload("res://scnes/winning.tscn")
+
 var debug_rect = ColorRect.new()
 
+var remaining_pigeons: int = 100
+
 func _ready():
-	#$AudioStreamPlayer.play()
+	$AudioStreamPlayer.play()
+	get_node("PigeonCounter/PigeonCounter").text = str(remaining_pigeons)
+	Global.currency += remaining_pigeons
 	pass
 
 #Get Mouce Position on Click
@@ -37,3 +43,8 @@ func _input(event):
 		#enemy.position = mouse_position
 		pigeon.position = event.position
 		add_child(pigeon)
+		remaining_pigeons -= 1
+		Global.currency -= 1
+		if remaining_pigeons == 0:
+			get_tree().change_scene_to_packed(winning_scene) #Placeholder, will be changed once a losing scene exists
+		get_node("PigeonCounter/PigeonCounter").text = str(remaining_pigeons)

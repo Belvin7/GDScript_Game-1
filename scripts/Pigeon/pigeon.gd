@@ -20,7 +20,7 @@ var local_pigeons: Array # array of all pigeons within the cohesion range
 
 var player
 
-var upgrades: Array[BasePigeonUpgrade] = GlobalPigeonUpgrades.upgrades
+var upgrades: Array[BasePigeonUpgrade] = Global.pigeon_upgrades
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -29,7 +29,7 @@ func _ready() -> void:
 	player = get_tree().get_nodes_in_group("player")[0]
 	current_pos = global_transform.origin
 	update_local_pigeons()
-	upgrades = GlobalPigeonUpgrades.upgrades
+	upgrades = Global.pigeon_upgrades
 	print(upgrades)
 	
 	
