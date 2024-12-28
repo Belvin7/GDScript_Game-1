@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dsh71alijdja8"]
 
 [ext_resource type="Texture2D" uid="uid://bn8183t6c1phf" path="res://art/chars/bird.png" id="1_0wy6n"]
-[ext_resource type="Script" path="res://scripts/pigeon.gd" id="1_7catg"]
+[ext_resource type="Script" path="res://scripts/Pigeon/pigeon.gd" id="1_7catg"]
 [ext_resource type="AudioStream" uid="uid://dpjlpi53r4i07" path="res://audio/pigeons-flying-6351.mp3" id="3_4h8ca"]
 [ext_resource type="PackedScene" uid="uid://cbgs56en7fp2v" path="res://handler/hurt_box.tscn" id="4_gdqda"]
 [ext_resource type="Script" path="res://scripts/hitbox_handler.gd" id="5_b0l6h"]

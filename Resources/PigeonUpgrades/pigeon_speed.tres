@@ -1,0 +1,6 @@
+[gd_resource type="Resource" script_class="SpeedPigeonUpgrade" load_steps=2 format=3 uid="uid://bq23t38i43e5v"]
+
+[ext_resource type="Script" path="res://scripts/Pigeon/PigeonUpgrades/speed_pigeon_upgrade.gd" id="1_h4m2s"]
+
+[resource]
+script = ExtResource("1_h4m2s")
