@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnlyn6tv4cbxp"]
+[gd_scene load_steps=5 format=3 uid="uid://cnlyn6tv4cbxp"]
 
 [ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_herx1"]
+[ext_resource type="AudioStream" uid="uid://by1mki2kxwgp1" path="res://audio/20241029-game-test.ogg" id="2_1br0d"]
 [ext_resource type="Texture2D" uid="uid://cx140467lxe6p" path="res://art/chars/tinfoil_hatman_colored.png" id="2_4yf38"]
 [ext_resource type="Texture2D" uid="uid://dixpesqmv5wlg" path="res://art/chars/taube.png" id="3_xwijb"]
 
@@ -43,6 +44,7 @@ theme_override_font_sizes/font_size = 32
 text = "Quit"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="MarginContainer"]
+stream = ExtResource("2_1br0d")
 
 [node name="TinfoilHatmanColored" type="Sprite2D" parent="."]
 position = Vector2(289, 414)
