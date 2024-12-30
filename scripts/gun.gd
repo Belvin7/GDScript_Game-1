@@ -38,30 +38,14 @@ func aimMouse() -> void:
 	if Input.is_action_just_pressed("space"):
 		shoot()
 		
-func aimAuto(target:Node2D) -> void:
-		# rotate gun
-	#looking_at(target.global_position)
-	#rotateGuntoEnemy(target)
-	
-	
-	
-	#clamp rotation
+func shotEnemy(target:Node2D):
+		#clamp rotation
 	rotation_degrees = wrap(rotation_degrees,0,360)
 	if rotation_degrees > 90 and rotation_degrees < 270:
 		scale.y = - 1
 	else:
 		scale.y = 1 
-	
-	shotEnemy(target)
-	
-# smooth rotation
-#func rotateGuntoEnemy(target:Node2D):
-#	var delta= get_physics_process_delta_time()
-#	var direction = (target.global_position - global_position)
-#	var angleTo =  $Gun.transform.x.angle_to(direction)
-#	$Gun.rotate(sign(angleTo) * min(delta * rotatSpeed, abs(angleTo)))
-
-func shotEnemy(target:Node2D):
+		
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.global_position = barrel.global_position
 	bullet_instance.bullet_velocity = target.global_position-bullet_instance.position
