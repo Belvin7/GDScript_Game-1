@@ -3,6 +3,11 @@ extends CharacterBody2D
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
+const rotate_speed = 10
+const accuracy = 0.5
+
+var enemyList = []
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -30,10 +35,37 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	
+	#shooting
+	update_Enemy_list()
+	#Shot enemy in enemyList
+	var tmp = enemyList.size()  # size() aufrufen, um die Anzahl der Elemente zu erhalten
+	if enemyList.size() > 0:  # size() aufrufen, um die Bedingung zu überprüfen
+		var direction = (enemyList[0].global_position - global_position)
+		var angleTo = $Gun.transform.x.angle_to(direction)
+		print("angle:"  + str(abs(angleTo)))
+		if abs(angleTo) > 0.01:
+			# Rotieren der Waffe in Richtung des Gegners
+			$Gun.rotate(sign(angleTo) * min(delta * rotate_speed, abs(angleTo)))
+			# Überprüfen, ob die Waffe auf den Gegner zeigt (Winkel fast 0)
+			if abs(angleTo) < accuracy:  # Toleranzwert für den Winkel
+				$Gun.shotEnemy(enemyList[0])  # Schießen
+				enemyList.remove_at(0)
 
 func _on_view_area_entered(area: Area2D) -> void:
 	var enemy = area.get_parent()
 	print("Area Entered: " + area.get_parent().name)
+	
+	#Add Enemy to List
+	enemyList.append(enemy)
+	
+	
 	#$Gun.aimAuto(area.get_parent())
-	$Gun.aimAuto(area.get_parent())
+	#$Gun.aimAuto(area.get_parent())
 	#$Gun.shoot()
+
+func update_Enemy_list() -> void: # updates the local_pigeons array to keep track of our local neighbourhood
+	if not enemyList.is_empty():
+		for enemy in enemyList:
+			if enemy == null:
+				enemyList.erase(enemy)
+				continue
