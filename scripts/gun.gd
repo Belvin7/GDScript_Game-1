@@ -2,6 +2,7 @@ extends Node2D
 
 
 const bullet = preload("res://scnes/bullet.tscn")
+var rotatSpeed = 10
 
 @onready var barrel: Marker2D = $GunBarrel
 
@@ -37,19 +38,14 @@ func aimMouse() -> void:
 	if Input.is_action_just_pressed("space"):
 		shoot()
 		
-func aimAuto(target:Node2D) -> void:
-		# rotate gun
-	look_at(target.global_position)
-	#clamp rotation
+func shotEnemy(target:Node2D):
+		#clamp rotation
 	rotation_degrees = wrap(rotation_degrees,0,360)
 	if rotation_degrees > 90 and rotation_degrees < 270:
 		scale.y = - 1
 	else:
 		scale.y = 1 
-	
-	shotEnemy(target)
-
-func shotEnemy(target:Node2D):
+		
 	var bullet_instance = bullet.instantiate()
 	bullet_instance.global_position = barrel.global_position
 	bullet_instance.bullet_velocity = target.global_position-bullet_instance.position
