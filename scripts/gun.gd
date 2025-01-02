@@ -2,7 +2,7 @@ extends Node2D
 
 
 const bullet = preload("res://scnes/bullet.tscn")
-var rotatSpeed = 10
+#var rotatSpeed = 10
 
 @onready var barrel: Marker2D = $GunBarrel
 

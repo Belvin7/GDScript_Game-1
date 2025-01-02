@@ -24,6 +24,11 @@ var upgrades: Array[BasePigeonUpgrade] = Global.pigeon_upgrades
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	Global.set_pigeon_damage(_damage)
+	Global.set_pigeon_speed(_speed)
+	Global.set_pigeon_health(_health)
+	
+	
 	#$AudioStreamPlayer.play()
 	pigeons = get_tree().get_nodes_in_group("pigeons")
 	player = get_tree().get_nodes_in_group("player")[0]

@@ -7,7 +7,6 @@ const debug: bool = false;
 @export var winning_scene: PackedScene = preload("res://scnes/winning.tscn")
 
 var debug_rect = ColorRect.new()
-
 var remaining_pigeons: int = 100
 
 func _ready():

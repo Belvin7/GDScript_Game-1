@@ -1,7 +1,7 @@
 class_name healthhandler
 extends Node
 
-@export var base_health_max : int = 100
+
 @export var hitbox_handler : HitboxHandler = null
  
 var current_healt : int = 0
@@ -10,7 +10,8 @@ signal apply_damage(value : int)
 
 func _ready():
 	apply_damage.connect(on_apply_damage)
-	current_healt = base_health_max
+
+
 
 func handle_health() -> void:
 	if hitbox_handler == null:
@@ -23,8 +24,21 @@ func handle_health() -> void:
 	return
 
 func calculate_damage(value:int)-> void:
+	
+	if get_parent().name == "Player":
+		current_healt = Global.get_player_health()
+	
+	if get_parent().name == "Pigeon":
+		current_healt = Global.get_pigeon_healt() 
+	
 	current_healt -= value
 	print( get_parent().name+ " Healt: " + str(current_healt))
+	
+	if get_parent().name == "Player":
+		Global.set_player_health(current_healt)
+	
+	if get_parent().name == "Pigeon":
+		Global.set_pigeon_health(current_healt)
 
 
 func on_apply_damage(damage : int) -> void:

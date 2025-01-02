@@ -38,7 +38,6 @@ parent = NodePath("..")
 
 [node name="Health_Handler" type="Node" parent="." node_paths=PackedStringArray("hitbox_handler")]
 script = ExtResource("6_aycp6")
-base_health_max = 10
 hitbox_handler = NodePath("../Hitbox_Handler")
 
 [node name="Hitbox" parent="." node_paths=PackedStringArray("health_handler") instance=ExtResource("7_h5lj5")]
