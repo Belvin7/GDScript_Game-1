@@ -26,6 +26,9 @@ var bullet_velocity: Vector2
 var bullet_speed: int
 var bullet_damage: int
 
+#ranges for health based changes
+var event_range_1: int = 50
+var event_range_2: int = 25
 
 ################
 # Get / Set Functions
@@ -111,3 +114,9 @@ func set_bullet_damage(value: int) -> void:
 
 func get_bullet_damage() -> int:
 	return bullet_damage
+
+func get_event_range_1() -> int:
+	return event_range_1
+	
+func get_event_range_2() -> int:
+	return event_range_2

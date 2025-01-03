@@ -9,14 +9,31 @@ const debug: bool = false;
 var debug_rect = ColorRect.new()
 var remaining_pigeons: int = 100
 
+var bgmusic1
+var bgmusic2
+var bgmusic3
+
 func _ready():
-	$AudioStreamPlayer.play()
+	#preload audio zeug
+	bgmusic1 = load("res://audio/ingame_loops/miniloop_ingame_1.ogg")
+	bgmusic2 = load("res://audio/ingame_loops/miniloop_ingame_2.ogg")
+	bgmusic3 = load("res://audio/ingame_loops/miniloop_ingame_3.ogg")
+	
+	$AudioStreamPlayer.stream = bgmusic1
+	$AudioStreamPlayer.play(0)
+	
+	#healtbar connection
+	
+	#load pigeon counter
 	get_node("PigeonCounter/PigeonCounter").text = str(remaining_pigeons)
 	Global.currency += remaining_pigeons
 	pass
 
 #Get Mouce Position on Click
 func _input(event):
+	if event.is_action_pressed("cheat"):
+		Global.set_player_health(Global.get_player_health()-10)
+	
 	if event is InputEventMouse and event.is_action_pressed("click"):
 		var mouse_position = get_viewport().get_mouse_position()
 		var collision_shape = get_node("Player/View/CollisionShape2D")
@@ -70,3 +87,20 @@ func is_point_inside_circle(global_point: Vector2, collision_shape: CollisionSha
 	if debug: print("Local Point: ", local_point)
 	if debug: print("Circle Radius: ", circle_shape.radius)
 	return local_point.length() <= circle_shape.radius
+	
+func changeMusic(rage_stage:int) -> void:
+	$AudioStreamPlayer.stop()
+	match rage_stage:
+		1:
+			if debug: print ("music change rage stage 1")
+			$AudioStreamPlayer.stream = bgmusic2
+		2:
+			if debug: print ("music change rage stage 1")
+			$AudioStreamPlayer.stream = bgmusic3
+	$AudioStreamPlayer.play(0)
+
+func _on_healtbar_health_change(val: int) -> void:
+	if val <= Global.get_event_range_1() and val >= Global.get_event_range_2():
+		changeMusic(1)
+	if val <= Global.get_event_range_2():
+		changeMusic(2)
