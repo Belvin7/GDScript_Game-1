@@ -97,7 +97,8 @@ func changeMusic(rage_stage:int) -> void:
 		2:
 			if debug: print ("music change rage stage 1")
 			$AudioStreamPlayer.stream = bgmusic3
-	$AudioStreamPlayer.play(0)
+	if debug: print(str($AudioStreamPlayer.get_playback_position() + AudioServer.get_time_since_last_mix()))
+	$AudioStreamPlayer.play($AudioStreamPlayer.get_playback_position() + AudioServer.get_time_since_last_mix())
 
 func _on_healtbar_health_change(val: int) -> void:
 	if val <= Global.get_event_range_1() and val >= Global.get_event_range_2():

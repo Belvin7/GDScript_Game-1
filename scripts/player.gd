@@ -4,6 +4,7 @@ const debug: bool = false;
 
 const JUMP_VELOCITY = -300.0
 
+var invalid_objects := []
 
 @export var player_speed = 130.0
 @export var player_rotate_speed = 1
@@ -37,10 +38,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 	#shooting
+	
+	#ressourcenlastig
 	update_Enemy_list()
 	#Shot enemy in enemyList
 	var lsize = enemyList.size()
 	if lsize> 0:
+		#Todo fix bug that enemyList[0] is <null>
 		var direction = (enemyList[0].global_position - global_position)
 		var angleTo = $Gun.transform.x.angle_to(direction)
 		if debug: print("angle:"  + str(abs(angleTo)))
@@ -62,8 +66,9 @@ func _on_view_area_entered(area: Area2D) -> void:
 
 
 func update_Enemy_list() -> void: #prüfen ob noch alle tauben vorhanden sind
-	if not enemyList.is_empty():
-		for enemy in enemyList:
-			if enemy == null:
-				enemyList.erase(enemy)
-				continue
+	for id in enemyList:
+		if not is_instance_valid(id):
+			invalid_objects.append(id)
+
+	for id in invalid_objects:
+		enemyList.erase(id)
