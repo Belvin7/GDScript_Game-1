@@ -1,5 +1,7 @@
 extends Control
 
+var debug : bool = false;
+
 @export var main_menu: PackedScene = preload("res://scnes/main_menu.tscn")
 @export var game: PackedScene = preload("res://scnes/game.tscn")
 
@@ -15,7 +17,8 @@ func _process(delta: float) -> void:
 
 func _on_speed_upgrade_button_pressed() -> void:
 	if Global.currency >= 10:
-		Global.pigeon_upgrades.append(SpeedPigeonUpgrade)
+		Global.pigeon_upgrades.append(SpeedPigeonUpgrade.new())
+		if debug: print ("Upgrade Array Size:" + str(Global.pigeon_upgrades.size()))
 		Global.currency -= 10
 		get_node("MarginContainer/VBoxContainer/HBoxContainer/Label").text = str(Global.currency)
 		print("Upgraded Speed")
@@ -25,7 +28,7 @@ func _on_speed_upgrade_button_pressed() -> void:
 
 func _on_damage_upgrade_button_pressed() -> void:
 	if Global.currency >= 10:
-		Global.pigeon_upgrades.append(DamagePigeonUpgrade)
+		Global.pigeon_upgrades.append(DamagePigeonUpgrade.new())
 		Global.currency -= 10
 		get_node("MarginContainer/VBoxContainer/HBoxContainer/Label").text = str(Global.currency)
 		print("Upgraded Damage")
@@ -34,7 +37,7 @@ func _on_damage_upgrade_button_pressed() -> void:
 
 func _on_health_upgrade_button_pressed() -> void:
 	if Global.currency >= 10:
-		Global.pigeon_upgrades.append(HealthPigeonUpgrade)
+		Global.pigeon_upgrades.append(HealthPigeonUpgrade.new())
 		Global.currency -= 10
 		get_node("MarginContainer/VBoxContainer/HBoxContainer/Label").text = str(Global.currency)
 		print("Upgraded Health")

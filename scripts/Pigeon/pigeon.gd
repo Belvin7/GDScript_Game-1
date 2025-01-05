@@ -20,13 +20,21 @@ var local_pigeons: Array # array of all pigeons within the cohesion range
 
 var player
 
-var upgrades: Array[BasePigeonUpgrade] = Global.pigeon_upgrades
-
+var upgrades: Array[BasePigeonUpgrade]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# base pigeon setup
 	Global.set_pigeon_damage(_damage)
 	Global.set_pigeon_speed(_speed)
 	Global.set_pigeon_health(_health)
+	
+	#Upgrades
+	upgrades = Global.pigeon_upgrades
+	ApplyUpgrades()
+	
+	#test
+	#if Global.get_pigeon_speed() < _speed:
+	#	Global.set_pigeon_speed(_speed)
 	
 	
 	#$AudioStreamPlayer.play()
@@ -129,7 +137,11 @@ func alignment() -> Vector2:
 	return alignment_velocity
 	
 
-
 #func _on_hitbox_handler_update_flock(pigeon) -> void:
 	#if local_pigeons.has(pigeon):
 		#local_pigeons.erase(pigeon)
+
+func ApplyUpgrades() -> void:
+	if upgrades.size() > 0:
+		for item in upgrades:
+			item.apply_upgrade(self)

@@ -3,4 +3,5 @@ extends BasePigeonUpgrade
 
 
 func apply_upgrade(pigeon: Pigeon):
-	pigeon._speed += 2000.0
+	print("upgrade system speed")
+	pigeon._speed += 10000

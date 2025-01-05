@@ -120,3 +120,11 @@ func get_event_range_1() -> int:
 	
 func get_event_range_2() -> int:
 	return event_range_2
+	
+# Upgrade debug	
+#func addUpgrade(upgrade:BasePigeonUpgrade) -> void:
+#	print("insert update")
+#	print("array length: " + str(pigeon_upgrades.size()))
+#	pigeon_upgrades.append(upgrade)
+#	print("inserted update")
+#	print("array length: " + str(pigeon_upgrades.size()))
