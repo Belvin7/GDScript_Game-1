@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwpwjv1q1b33m"]
+
+[sub_resource type="Gradient" id="Gradient_60sxt"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.266575, 0.266575, 0.266575, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7o3dq"]
+gradient = SubResource("Gradient_60sxt")
+
+[node name="Background" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(164.94, 85.0558)
+scale = Vector2(5.88238, 4.05135)
+texture = SubResource("GradientTexture2D_7o3dq")
+offset = Vector2(-0.2, 0.315)
+flip_h = true
+flip_v = true

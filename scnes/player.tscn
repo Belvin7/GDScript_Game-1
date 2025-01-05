@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c3epy7vnuf111"]
+[gd_scene load_steps=16 format=3 uid="uid://c3epy7vnuf111"]
 
 [ext_resource type="Texture2D" uid="uid://cs6gm25et1nqt" path="res://art/chars/knight.png" id="1_mju4o"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_x5xim"]
@@ -49,6 +49,16 @@ radius = 10.0499
 [sub_resource type="CircleShape2D" id="CircleShape2D_6xkre"]
 radius = 66.0
 
+[sub_resource type="Gradient" id="Gradient_nvdmy"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.309524, 0.541667, 0.785714)
+colors = PackedColorArray(1, 1, 0.0392157, 1, 0.513726, 0.513726, 0, 0.203922, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8y3ig"]
+gradient = SubResource("Gradient_nvdmy")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_x5xim")
 
@@ -84,5 +94,14 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="View"]
 shape = SubResource("CircleShape2D_6xkre")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1, -6)
+scale = Vector2(29.7416, 29.7416)
+color = Color(0.960784, 0.929412, 0, 0.556863)
+energy = 0.57
+range_z_max = -1
+texture = SubResource("GradientTexture2D_8y3ig")
+texture_scale = 0.1
 
 [connection signal="area_entered" from="View" to="." method="_on_view_area_entered"]
