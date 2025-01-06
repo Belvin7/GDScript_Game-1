@@ -9,9 +9,16 @@ const debug: bool = false;
 var debug_rect = ColorRect.new()
 var remaining_pigeons: int = 100
 
+
 var bgmusic1
 var bgmusic2
 var bgmusic3
+
+#sfx connection
+var HitSoundKatalog = Global.MusicTest
+var rng = RandomNumberGenerator.new()
+var HitSound :AudioStream
+
 
 func _ready():
 	#preload audio zeug
@@ -21,8 +28,6 @@ func _ready():
 	
 	$AudioStreamPlayer.stream = bgmusic1
 	$AudioStreamPlayer.play(0)
-	
-	#healtbar connection
 	
 	#load pigeon counter
 	get_node("PigeonCounter/PigeonCounter").text = str(remaining_pigeons)
@@ -105,3 +110,10 @@ func _on_healtbar_health_change(val: int) -> void:
 		changeMusic(1)
 	if val <= Global.get_event_range_2():
 		changeMusic(2)
+
+
+func _on_player_player_hit() -> void:
+	var rn = rng.randi_range(0, 2)
+	var HitSound = load(HitSoundKatalog[rn])
+	$AudioSfxPlayer.stream = HitSound
+	$AudioSfxPlayer.play()

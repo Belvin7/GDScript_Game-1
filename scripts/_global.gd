@@ -128,3 +128,17 @@ func get_event_range_2() -> int:
 #	pigeon_upgrades.append(upgrade)
 #	print("inserted update")
 #	print("array length: " + str(pigeon_upgrades.size()))
+
+
+################
+#Global Audio Vars
+################
+
+###
+#test
+###
+var musictest1:String = "res://audio/test/1.ogg"
+var musictest2:String = "res://audio/test/2.ogg"
+var musictest3:String = "res://audio/test/3.ogg"
+
+var MusicTest = [musictest1,musictest2,musictest3]

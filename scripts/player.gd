@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-const debug: bool = false;
+signal playerHit 
 
+const debug: bool = false;
 const JUMP_VELOCITY = -300.0
 
 var invalid_objects := []
@@ -72,3 +73,7 @@ func update_Enemy_list() -> void: #prüfen ob noch alle tauben vorhanden sind
 
 	for id in invalid_objects:
 		enemyList.erase(id)
+
+
+func _on_hitbox_apply_hit(damage: int) -> void:
+	playerHit.emit() # Replace with function body.
