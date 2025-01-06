@@ -23,6 +23,10 @@ var enemyList = []
 
 
 func _physics_process(delta: float) -> void:
+	
+	#update rotate speed
+	player_rotate_speed = Global.get_player_rotate_speed()
+	
 	var horizontal := Input.get_axis("left", "right")
 	var vertical := Input.get_axis("up", "down")
 	

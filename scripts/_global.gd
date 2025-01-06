@@ -20,6 +20,8 @@ var player_health:int
 var player_speed: int
 var player_rotate_speed: int
 var player_accuracy: int
+var player_rage_stage_1_rotate_speed_multiplier: int = 2
+var player_rage_stage_2_rotate_speed_multiplier: int = 3
 
 #bullet
 var bullet_velocity: Vector2
@@ -142,3 +144,8 @@ var musictest2:String = "res://audio/test/2.ogg"
 var musictest3:String = "res://audio/test/3.ogg"
 
 var MusicTest = [musictest1,musictest2,musictest3]
+
+func applyRageStage(rage_stage:int):
+		match rage_stage:
+			1:  set_player_rotate_speed(player_rotate_speed*player_rage_stage_1_rotate_speed_multiplier)
+			2:  set_player_rotate_speed(player_rotate_speed*player_rage_stage_2_rotate_speed_multiplier)

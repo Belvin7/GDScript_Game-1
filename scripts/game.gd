@@ -99,9 +99,12 @@ func changeMusic(rage_stage:int) -> void:
 		1:
 			if debug: print ("music change rage stage 1")
 			$AudioStreamPlayer.stream = bgmusic2
+			Global.applyRageStage(rage_stage)
 		2:
 			if debug: print ("music change rage stage 1")
 			$AudioStreamPlayer.stream = bgmusic3
+			Global.applyRageStage(rage_stage)
+			
 	if debug: print(str($AudioStreamPlayer.get_playback_position() + AudioServer.get_time_since_last_mix()))
 	$AudioStreamPlayer.play($AudioStreamPlayer.get_playback_position() + AudioServer.get_time_since_last_mix())
 

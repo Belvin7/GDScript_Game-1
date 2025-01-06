@@ -37,7 +37,7 @@ func _ready() -> void:
 	#	Global.set_pigeon_speed(_speed)
 	
 	
-	#$AudioStreamPlayer.play()
+	$AudioStreamPlayer.play()
 	pigeons = get_tree().get_nodes_in_group("pigeons")
 	player = get_tree().get_nodes_in_group("player")[0]
 	current_pos = global_transform.origin
