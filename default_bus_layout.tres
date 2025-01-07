@@ -1,0 +1,35 @@
+[gd_resource type="AudioBusLayout" load_steps=4 format=3 uid="uid://bqt2oj68nnnfk"]
+
+[sub_resource type="AudioEffectPanner" id="AudioEffectPanner_aylve"]
+resource_name = "Panner"
+pan = -0.7
+
+[sub_resource type="AudioEffectPanner" id="AudioEffectPanner_ru4j7"]
+resource_name = "Panner"
+pan = 0.8
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_vb1ql"]
+resource_name = "EQ"
+band_db/32_hz = -49.5
+band_db/100_hz = -47.0
+band_db/10000_hz = -34.0
+
+[resource]
+bus/1/name = &"Speech"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -3.11736
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectPanner_aylve")
+bus/1/effect/0/enabled = true
+bus/2/name = &"Hit"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = -5.04538
+bus/2/send = &"Master"
+bus/2/effect/0/effect = SubResource("AudioEffectPanner_ru4j7")
+bus/2/effect/0/enabled = true
+bus/2/effect/1/effect = SubResource("AudioEffectEQ_vb1ql")
+bus/2/effect/1/enabled = true

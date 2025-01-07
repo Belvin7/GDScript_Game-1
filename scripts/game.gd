@@ -15,10 +15,18 @@ var bgmusic2
 var bgmusic3
 
 #sfx connection
-var HitSoundKatalog = Global.MusicTest
-var rng = RandomNumberGenerator.new()
-var HitSound :AudioStream
 
+var HitSoundKatalog
+var RandomSpeechKatalog
+var HitSound :AudioStream
+var RandomSpeech: AudioStream
+
+#random generator
+var rng = RandomNumberGenerator.new()
+
+#random timer 
+var rndtimer = Timer.new()
+var rndtime = RandomNumberGenerator.new()
 
 func _ready():
 	#preload audio zeug
@@ -29,9 +37,25 @@ func _ready():
 	$AudioStreamPlayer.stream = bgmusic1
 	$AudioStreamPlayer.play(0)
 	
+	#load Audio
+	Global.loadHits()
+	Global.loadRandomSpeech()
+	HitSoundKatalog = Global.AudioHits
+	RandomSpeechKatalog = Global.RandomSpeech
+	
+	
 	#load pigeon counter
 	get_node("PigeonCounter/PigeonCounter").text = str(remaining_pigeons)
 	Global.currency += remaining_pigeons
+	
+	#random timer 
+	rndtime.randomize()
+	rndtimer.timeout.connect(_on_timer_timeout)
+
+	add_child(rndtimer) #to process
+	rndtimer.set_wait_time(rndtime.randf_range(15,45 ))
+	rndtimer.start() #to start
+
 	pass
 
 #Get Mouce Position on Click
@@ -116,7 +140,19 @@ func _on_healtbar_health_change(val: int) -> void:
 
 
 func _on_player_player_hit() -> void:
-	var rn = rng.randi_range(0, 2)
+	var rn = rng.randi_range(0, HitSoundKatalog.size()-1)
+	if debug: print("sfxtrack:"+str(HitSoundKatalog[rn]))
 	var HitSound = load(HitSoundKatalog[rn])
+	$AudioSfxPlayer.bus ="Hit"
 	$AudioSfxPlayer.stream = HitSound
 	$AudioSfxPlayer.play()
+	
+func _on_timer_timeout():
+	var rn = rng.randi_range(0, RandomSpeechKatalog.size()-1)
+	if debug: print("sfxtrack:"+str(RandomSpeechKatalog[rn]))
+	var rndSpeechSound = load(RandomSpeechKatalog[rn])
+	$AudioSfxPlayer.bus ="speech"
+	$AudioSfxPlayer.stream = rndSpeechSound
+	$AudioSfxPlayer.play()
+	
+	rndtimer.set_wait_time(rndtime.randf_range(1, 5))

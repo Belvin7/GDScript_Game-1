@@ -122,30 +122,27 @@ func get_event_range_1() -> int:
 	
 func get_event_range_2() -> int:
 	return event_range_2
-	
-# Upgrade debug	
-#func addUpgrade(upgrade:BasePigeonUpgrade) -> void:
-#	print("insert update")
-#	print("array length: " + str(pigeon_upgrades.size()))
-#	pigeon_upgrades.append(upgrade)
-#	print("inserted update")
-#	print("array length: " + str(pigeon_upgrades.size()))
-
 
 ################
-#Global Audio Vars
+# Rage Stages
 ################
-
-###
-#test
-###
-var musictest1:String = "res://audio/test/1.ogg"
-var musictest2:String = "res://audio/test/2.ogg"
-var musictest3:String = "res://audio/test/3.ogg"
-
-var MusicTest = [musictest1,musictest2,musictest3]
 
 func applyRageStage(rage_stage:int):
 		match rage_stage:
 			1:  set_player_rotate_speed(player_rotate_speed*player_rage_stage_1_rotate_speed_multiplier)
 			2:  set_player_rotate_speed(player_rotate_speed*player_rage_stage_2_rotate_speed_multiplier)
+
+
+################
+# Global Audio Vars
+################
+var AudioHits = []
+var RandomSpeech = []
+
+func loadHits()-> void:
+	for n in range(1,13):
+		AudioHits.append("res://audio/hit/hit"+str(n)+".wav") 
+		
+func loadRandomSpeech()-> void:
+	for n in range(1,27):
+		RandomSpeech.append("res://audio/random/random"+str(n)+".wav") 
