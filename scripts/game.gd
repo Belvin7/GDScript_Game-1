@@ -4,7 +4,7 @@ extends Node2D
 const debug: bool = false;
 
 @export var pigeon_scene = preload("res://scnes/pigeon.tscn") 
-@export var winning_scene: PackedScene = preload("res://scnes/winning.tscn")
+@export var loosing_scene: PackedScene = preload("res://scnes/loosing.tscn")
 
 var debug_rect = ColorRect.new()
 var remaining_pigeons: int = 100
@@ -40,6 +40,9 @@ func _ready():
 	#load Audio
 	Global.loadHits()
 	Global.loadRandomSpeech()
+	Global.loadRandomWinStatement()
+	Global.loadRandomLooseStatement()
+	
 	HitSoundKatalog = Global.AudioHits
 	RandomSpeechKatalog = Global.RandomSpeech
 	
@@ -100,8 +103,9 @@ func _input(event):
 			add_child(pigeon)
 			remaining_pigeons -= 1
 			Global.currency -= 1
-			if remaining_pigeons == 0:
-				get_tree().change_scene_to_packed(winning_scene) #Placeholder, will be changed once a losing scene exists
+			if remaining_pigeons == 0: # todo remove bug on last pigeon
+				get_tree().change_scene_to_packed(loosing_scene)
+				MusicPlayer.play_win_sfx()#Placeholder, will be changed once a losing scene exists
 			get_node("PigeonCounter/PigeonCounter").text = str(remaining_pigeons)
 
 func is_point_inside_circle(global_point: Vector2, collision_shape: CollisionShape2D) -> bool:

@@ -15,6 +15,7 @@ func on_handle_hitbox() -> void:
 	if get_parent().name == "Player":
 		get_tree().paused = true;
 		get_tree().change_scene_to_file("res://scnes/winning.tscn")
+		MusicPlayer.play_loose_sfx()
 	 
 	parent.queue_free()
 	
