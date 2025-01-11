@@ -146,13 +146,13 @@ func loadHits()-> void:
 		AudioHits.append("res://audio/hit/hit"+str(n)+".wav") 
 		
 func loadRandomSpeech()-> void:
-	for n in range(1,27):
+	for n in range(1,28):
 		RandomSpeech.append("res://audio/random/random"+str(n)+".wav") 
 
 func loadRandomWinStatement()-> void:
-	for n in range(1,5):
+	for n in range(1,6):
 		WinStatements.append("res://audio/win/win_screen"+str(n)+".wav") 
 		
 func loadRandomLooseStatement()-> void:
-	for n in range(1,5):
+	for n in range(1,6):
 		LooseStatements.append("res://audio/loose/loose_screen"+str(n)+".wav") 

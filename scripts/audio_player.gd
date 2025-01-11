@@ -6,7 +6,7 @@ const menu_music = preload("res://audio/20241029-game-test.ogg")
 
 #sfx connection
 var RandomWinStatementsKatalog
-var RamdomLooseStatementKatalog
+var RandomLooseStatementKatalog
 var WinStatement :AudioStream
 var LooseStatement :AudioStream
 var FinaLooseStatement :AudioStream = load("res://audio/loose/loose_final.wav")
@@ -17,7 +17,7 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	if debug: print("audioplayer ready")
 	RandomWinStatementsKatalog = Global.WinStatements
-	RamdomLooseStatementKatalog = Global.LooseStatements
+	RandomLooseStatementKatalog = Global.LooseStatements
 
 func _play_music(music: AudioStream, volume=-12.0):
 	if stream == music: 
@@ -37,10 +37,11 @@ func play_win_sfx():
 	play_sfx(WinStatement)
 	
 func play_loose_sfx():
-	var rn = rng.randi_range(0, RamdomLooseStatementKatalog.size()-1)
-	if debug: print("sfxloose:"+str(RamdomLooseStatementKatalog[rn]))
-	var WinStatement = load(RamdomLooseStatementKatalog[rn])
+	var rn = rng.randi_range(0, RandomLooseStatementKatalog.size()-1)
+	if debug: print("sfxloose:"+str(RandomLooseStatementKatalog[rn]))
+	var WinStatement = load(RandomLooseStatementKatalog[rn])
 	play_sfx(WinStatement)
+	await get_tree().create_timer(2.5).timeout # qick dirty
 	play_sfx(FinaLooseStatement)
 
 func play_sfx(stream:AudioStream, volume=-12.0):
