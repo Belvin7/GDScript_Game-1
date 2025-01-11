@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3epy7vnuf111"]
+[gd_scene load_steps=17 format=3 uid="uid://c3epy7vnuf111"]
 
 [ext_resource type="Texture2D" uid="uid://cs6gm25et1nqt" path="res://art/chars/knight.png" id="1_mju4o"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_x5xim"]
@@ -59,6 +59,9 @@ gradient = SubResource("Gradient_nvdmy")
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hxx6b"]
+size = Vector2(12, 5.5)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_x5xim")
 
@@ -81,6 +84,7 @@ collision_mask = 0
 health_handler = NodePath("../health_handler")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+visible = false
 position = Vector2(1, -8)
 shape = SubResource("CircleShape2D_74uvu")
 
@@ -93,6 +97,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="View"]
+visible = false
 shape = SubResource("CircleShape2D_6xkre")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
@@ -103,5 +108,10 @@ energy = 0.57
 range_z_max = -1
 texture = SubResource("GradientTexture2D_8y3ig")
 texture_scale = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+physics_interpolation_mode = 2
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_hxx6b")
 
 [connection signal="area_entered" from="View" to="." method="_on_view_area_entered"]

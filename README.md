@@ -8,8 +8,13 @@ TODO: Guide users through getting your code up and running on their own system. 
 3.	Latest releases
 4.	API references
 
-https://megabyte-games.itch.io/pattern-pack-chromatic-camouflage?download
-https://slyfox-studios.itch.io/buttons-pack
+4.
+###Assets used 
+
+- [tilesets](https://je1ly.itch.io/isometrictilemap)
+- [camo_color_for_UI](https://megabyte-games.itch.io/pattern-pack-chromatic-camouflage?download)
+- [buttons_pack](https://slyfox-studios.itch.io/buttons-pack)
+- [bullet](https://dinopixel.com/bullet-pixel-art-42595)
 
 
 # Build and Test

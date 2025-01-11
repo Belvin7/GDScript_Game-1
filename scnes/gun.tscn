@@ -13,3 +13,4 @@ texture = ExtResource("1_rc8ge")
 
 [node name="GunBarrel" type="Marker2D" parent="."]
 position = Vector2(24, -1)
+scale = Vector2(0.910931, 1.01966)
