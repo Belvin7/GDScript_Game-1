@@ -1,6 +1,7 @@
 class_name WinningMenu
 extends Control
 
+var debug : bool = false
 
 @onready var shop_button: Button = $MarginContainer/HBoxContainer/VBoxContainer/Shop_Button
 @onready var main_menu_button: Button = $MarginContainer/HBoxContainer/VBoxContainer/Main_Menu_Button

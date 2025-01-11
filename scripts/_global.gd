@@ -20,6 +20,8 @@ var player_health:int
 var player_speed: int
 var player_rotate_speed: int
 var player_accuracy: int
+var player_rage_stage_1_rotate_speed_multiplier: int = 2
+var player_rage_stage_2_rotate_speed_multiplier: int = 3
 
 #bullet
 var bullet_velocity: Vector2
@@ -120,11 +122,37 @@ func get_event_range_1() -> int:
 	
 func get_event_range_2() -> int:
 	return event_range_2
-	
-# Upgrade debug	
-#func addUpgrade(upgrade:BasePigeonUpgrade) -> void:
-#	print("insert update")
-#	print("array length: " + str(pigeon_upgrades.size()))
-#	pigeon_upgrades.append(upgrade)
-#	print("inserted update")
-#	print("array length: " + str(pigeon_upgrades.size()))
+
+################
+# Rage Stages
+################
+
+func applyRageStage(rage_stage:int):
+		match rage_stage:
+			1:  set_player_rotate_speed(player_rotate_speed*player_rage_stage_1_rotate_speed_multiplier)
+			2:  set_player_rotate_speed(player_rotate_speed*player_rage_stage_2_rotate_speed_multiplier)
+
+
+################
+# Global Audio Vars
+################
+var AudioHits = []
+var RandomSpeech = []
+var WinStatements = []
+var LooseStatements = []
+
+func loadHits()-> void:
+	for n in range(1,13):
+		AudioHits.append("res://audio/hit/hit"+str(n)+".wav") 
+		
+func loadRandomSpeech()-> void:
+	for n in range(1,28):
+		RandomSpeech.append("res://audio/random/random"+str(n)+".wav") 
+
+func loadRandomWinStatement()-> void:
+	for n in range(1,6):
+		WinStatements.append("res://audio/win/win_screen"+str(n)+".wav") 
+		
+func loadRandomLooseStatement()-> void:
+	for n in range(1,6):
+		LooseStatements.append("res://audio/loose/loose_screen"+str(n)+".wav") 

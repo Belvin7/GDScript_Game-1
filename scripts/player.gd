@@ -1,7 +1,8 @@
 extends CharacterBody2D
 
-const debug: bool = false;
+signal playerHit 
 
+const debug: bool = false;
 const JUMP_VELOCITY = -300.0
 
 var invalid_objects := []
@@ -22,6 +23,10 @@ var enemyList = []
 
 
 func _physics_process(delta: float) -> void:
+	
+	#update rotate speed
+	player_rotate_speed = Global.get_player_rotate_speed()
+	
 	var horizontal := Input.get_axis("left", "right")
 	var vertical := Input.get_axis("up", "down")
 	
@@ -72,3 +77,7 @@ func update_Enemy_list() -> void: #prüfen ob noch alle tauben vorhanden sind
 
 	for id in invalid_objects:
 		enemyList.erase(id)
+
+
+func _on_hitbox_apply_hit(damage: int) -> void:
+	playerHit.emit() # Replace with function body.
