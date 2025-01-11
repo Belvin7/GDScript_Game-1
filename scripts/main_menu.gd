@@ -4,15 +4,15 @@ extends Control
 @export var credits: PackedScene = preload("res://scnes/credits.tscn")
 
 func _ready() -> void:
-	$MarginContainer/AudioStreamPlayer.play()
+	MusicPlayer.play_music_menu()
 	
 func _on_play_pressed() -> void:
-	AudioPlayer.stop()
+	MusicPlayer.stop()
 	get_tree().change_scene_to_packed(game)
 
 
 func _on_credits_pressed() -> void:
-	AudioPlayer.stop()
+	MusicPlayer.stop()
 	get_tree().change_scene_to_packed(credits)
 
 

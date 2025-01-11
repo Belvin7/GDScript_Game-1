@@ -72,8 +72,6 @@ libraries = {
 "": SubResource("AnimationLibrary_j1fpe")
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-
 [node name="gameby" type="Label" parent="."]
 offset_left = 504.0
 offset_top = 58.0

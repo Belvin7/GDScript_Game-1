@@ -17,7 +17,7 @@ config/icon="res://art/chars/taube.png"
 
 [autoload]
 
-AudioPlayer="*res://scnes/audio_player.tscn"
+MusicPlayer="*res://scnes/audio_player.tscn"
 Global="*res://scripts/_global.gd"
 
 [display]
