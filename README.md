@@ -1,4 +1,4 @@
-# 🕊️ Pigeons with Helmets 🪖
+# Pigeons with Helmets
 
 ![Pigeons Mainmenu](art/displaypics/game-mainmenu.jpeg)
 
