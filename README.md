@@ -4,14 +4,14 @@
 
 ![Pigeons Gameplay](art/displaypics/game-ingame.jpeg)
 
-## 🧠 Introduction
+## Introduction
 
 **Pigeons with Helmets** is a simple yet strategic action game developed using **GDScript**, a Python-based programming language, within the **Godot** game engine.
 
 The objective? Outsmart a rogue soldier (an enemy of the government) who has gone bad and now continuously shoots at innocent pigeons. Your mission is to **spawn pigeons strategically** and eliminate the soldier using the **least number of pigeons possible**.
 
 
-## 🚀 Getting Started
+## Getting Started
 
 To get the game running on your machine, follow these steps:
 
